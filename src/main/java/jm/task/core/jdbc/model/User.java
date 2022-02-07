@@ -1,11 +1,12 @@
 package jm.task.core.jdbc.model;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import net.bytebuddy.dynamic.loading.InjectionClassLoader;
+
+import javax.persistence.*;
 
 @Table
 public class User {
+
     @Id
     private Long id;
 
@@ -20,6 +21,12 @@ public class User {
 
     public User() {
 
+    }
+
+
+    public String toString() {
+        return String.format("User {id = '%s', name = '%s', lastName = '%s', age = '%d'}",
+                getId(), getName(), getLastName(), getAge());
     }
 
     public User(String name, String lastName, Byte age) {
