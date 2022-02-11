@@ -4,10 +4,11 @@ import net.bytebuddy.dynamic.loading.InjectionClassLoader;
 
 import javax.persistence.*;
 
-@Table
+@Entity
+@Table(name = "people")
 public class User {
-
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column
@@ -22,7 +23,6 @@ public class User {
     public User() {
 
     }
-
 
     public String toString() {
         return String.format("User {id = '%s', name = '%s', lastName = '%s', age = '%d'}",

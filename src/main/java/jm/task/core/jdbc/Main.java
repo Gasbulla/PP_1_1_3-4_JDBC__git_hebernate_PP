@@ -5,10 +5,6 @@ import jm.task.core.jdbc.service.UserService;
 import jm.task.core.jdbc.service.UserServiceImpl;
 import jm.task.core.jdbc.util.Util;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-
 public class Main {
 
     public static final UserService us = new UserServiceImpl();
@@ -19,15 +15,20 @@ public class Main {
     public static final User user5 = new User("Taibat","Ligmatova",(byte)25);
 
     public static void main(String[] args) {
+
         us.createUsersTable();
         us.saveUser(user1.getName(),user1.getLastName(),user1.getAge());
         us.saveUser(user2.getName(),user2.getLastName(),user2.getAge());
         us.saveUser(user3.getName(),user3.getLastName(),user3.getAge());
         us.saveUser(user4.getName(),user4.getLastName(),user4.getAge());
         us.saveUser(user5.getName(),user5.getLastName(),user5.getAge());
-        us.removeUserById(1);
+//        us.removeUserById(1);
+
         us.getAllUsers().forEach(System.out::println);
+//
         us.cleanUsersTable();
         us.dropUsersTable();
+//
+        Util.closeConnection();
     }
 }
